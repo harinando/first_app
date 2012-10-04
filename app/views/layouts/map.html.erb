@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9" />
+    <!--The viewport meta tag is used to improve the presentation and behavior of the samples on iOS devices-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    
+    <title> Map </title> 
+    
+    <link rel="stylesheet" type="text/css" href="http//serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dijit/themes/claro/claro.css" > 
+    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/esri/css/esri.css" /> 
+   
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    
+  
+    <script type="text/javascript">var djConfig = {parseOnLoad: true};</script> 
+    <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=3.2"></script> 
+    
+    <script type="text/javascript"> 
+      dojo.require("dijit.layout.BorderContainer");
+      dojo.require("dijit.layout.ContentPane");
+      dojo.require("dijit.layout.AccordionContainer");
+      dojo.require("esri.map");
+      dojo.require("esri.dijit.Legend");
+      dojo.require("esri.arcgis.utils");
+      dojo.require("dijit.form.CheckBox");
+      
+      var map;
+      var legendLayers = []
+    
+      function init() {
+        
+        var initialExtent = new esri.geometry.Extent({"xmin":-117.98,"ymin":33.95,"xmax":-116.92,"ymax":34.44,"spatialReference":{"wkid":4326}});
+        map = new esri.Map("map", { extent: esri.geometry.geographicToWebMercator(initialExtent)});
+        
+         //Add the terrain service to the map. View the ArcGIS Online site for services http://arcgisonline/home/search.html?t=content&f=typekeywords:service    
+        var basemap = new esri.layers.ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer");
+        map.addLayer(basemap);
+           
+      }
+ 
+ 
+      dojo.addOnLoad(init);
+    </script> 
+  </head> 
+  
+  <body> 
+    <%= yield %>   
+  </body> 
+</html>

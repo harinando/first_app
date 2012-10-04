@@ -1,0 +1,17 @@
+<% provide(:title, 'Home') %>
+
+<div id="content" dojotype="dijit.layout.BorderContainer" design="headline" gutters="true"> 
+	<div id="rightPane" dojotype="dijit.layout.ContentPane" region="left" >
+		<div dojoType="dijit.layout.AccordionContainer" duration="100">
+			 <div id="resultCounties" dojoType="dijit.layout.ContentPane" title="Counties"> </div>
+			 
+			 <div id="resultLegalDesc" dojoType="dijit.layout.ContentPane" title="Legal Description"> </div>
+			 
+			 <div id="resultProperties" dojoType="dijit.layout.ContentPane" title="Properties"> </div>
+		</div>
+	</div>
+	
+	 <div id="map" dojotype="dijit.layout.ContentPane" region="center" style="overflow:hidden;"> 
+     </div> 
+     
+</div>
